@@ -1,42 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { categories } from '../data/productsData';
+import { useProducts } from '../context/ProductContext';
 
 const CategoriesSection = () => {
   const navigate = useNavigate();
+  const { categories, loading } = useProducts();
 
-  // const categories = [
-  //   {
-  //     id: 'rice',
-  //     label: 'Rice & Grains',
-  //     image: 'https://tiimg.tistatic.com/fp/1/005/862/rice-products-rice-rawa-rice-flour-rice-whole--451.jpg'
-  //   },
-  //   {
-  //     id: 'spices',
-  //     label: 'Spices & Condiments',
-  //     image: 'https://proficiencytesting.in/wp-content/uploads/2023/08/23-e1693221149166.jpg'
-  //   },
-  //   {
-  //     id: 'seeds',
-  //     label: 'Seeds & Nuts',
-  //     image: 'https://nyspiceshop.com/cdn/shop/articles/TYPES_OF_NUTS_AND_SEEDS_AND_THEIR_HEALTH_BENEFITS.jpeg?v=1730226897'
-  //   },
-  //   {
-  //     id: 'processed',
-  //     label: 'Sea Foods',
-  //     image: 'https://agrospectrumindia.com/wp-content/uploads/2024/12/seafood-iStock-1.jpg'
-  //   },
-  //   {
-  //     id: 'textile',
-  //     label: 'Textiles',
-  //     image: 'https://img.freepik.com/free-photo/shop-clothing-clothes-shop-hanger-modern-shop-boutique_1150-8886.jpg?semt=ais_hybrid&w=740&q=80'
-  //   },
-  //   {
-  //     id: 'herbal',
-  //     label: 'Herbal & Ayurvedic',
-  //     image: 'https://i.herbalreality.com/wp-content/uploads/2022/07/21123810/ayurveda-ayurvedic-herbs-terms-glossary.jpg'
-  //   }
-  // ];
+  if (loading) return null;
 
   const displayCategories = categories.filter(cat =>
     ['rice', 'spices', 'seeds', 'processed', 'textile', 'herbal'].includes(cat.id)
